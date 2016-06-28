@@ -105,6 +105,16 @@ void rtty_txbyte(uint8_t b)
   rtty_txbit(1);
 }
 
+void rtty_txstring(String str)
+{
+  int len = str.length();
+  char buf[len];
+  str.toCharArray(buf, len);
+
+  rtty_txstring(buf);
+  
+}
+
 void rtty_txstring(char *str)
 {
   enum baudot_mode current_mode = NONE;
